@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Bunlar nədir?
+@tailwind base;
+Tailwind-in reset və sıfırlama CSS-lərini əlavə edir (yəni brauzerin default stilini sıfırlayır).
+
+@tailwind components;
+Tailwind-in bəzi hazır komponentlərinə aid stil yazılarını əlavə edir (məsələn, form kontrolleri üçün bazada olan stil).
+
+@tailwind utilities;
+Tailwind-in əsas utility class-larını daxil edir (məsələn, bg-red-500, text-xl, flex, mt-4 və s.).
+
+###
+
+Tailwind default olaraq node_modules daxil olmaqla bütün faylları scan edə bilər. Bu isə output.css faylının həddindən artıq böyük olmasına səbəb ola bilər.
+Bunun qarşısını almağın iki yolu var:
+
+.gitignore daxilində node_modules/ qeyd edilsin — Tailwind v4 bunu tanıyır və həmin qovluğu avtomatik skip edir.
+
+CSS daxilində @import və @source direktivləri ilə konkret olaraq hansı faylların scan ediləcəyini göstərmək.
+@import "tailwindcss" source(none); /* Əvvəlcə Tailwind-i yüklə, amma avtomatik scan etmə */
+@source "./";                       /* Yalnız cari qovluqdakı (məsələn: index.html) fayllara bax */
+
+
+###
+
+Tailwind CSS daxilində ümumiyyətlə üç əsas "layer" (qat) mövcuddur:
+
+Base (Əsas) layer
+
+Components (Komponent) layer
+
+##
+Utilities (Faydalı class-lar) layer
+
+🧱 1. Base layer nədir?
+Base layer adətən birbaşa HTML tag-lara stil verir.
+Məsələn:
+
+body, h2, button kimi elementlərə default stil təyin edir.
+
+
+##
+🧩 2. Components layer nədir?
+Tailwind CSS özündə hazır komponentlərlə gəlmir.
+Yəni:
+
+"Tailwind komponentlərlə gəlmir, yalnız utility class-larla gəlir."
+
+Amma sən istəsən, Tailwind vasitəsilə öz komponentlərini yarada bilərsən (məsələn: .btn-primary, .card və s.).
+Lakin 99% hallarda tövsiyə edilmir
+##
+Niyə komponent yaratmaq tövsiyə edilmir?
+Çünki:
+
+Tailwind-in utility class-ları ilə işləmək çox çevikdir
+
+Ekrandakı hər elementi rahatlıqla style etmək üçün utility class-lar kifayətdir
+
+Əslində real dünyada 99% hallarda komponent yaratmağa ehtiyac olmur
+
+Utilities (Faydalı class-lar) layer
+
+Üstünlük overwrite edilir
+base → components → utilities
+##
+CSS Specificity sırası:
+!important
+
+inline style (style="")
+
+class-lar (.btn, .text-xl) — Tailwind utility class-lar da bura daxildir
+
+tag-lar (div, button)
+
+default stil və ya browser stil
+
+
+
+## inlooine la file ferqi
+ Yəni əsas 2 fərq nədir?
+Tailwind dizayn məhdudiyyətləri ilə gəlir → random ölçülər əvəzinə standart class-lardan istifadə edirsən.
+
+Tailwind vəziyyətlər və media query-lərlə işləyə bilir → inline style isə bunu bacarmır.
