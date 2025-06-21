@@ -11,7 +11,7 @@
   <body>
     <main>
       <header class="text-zinc-200">
-        <nav
+        <div
           class="sticky top-0 flex bg-gradient-to-r from-rose-500 to-pink-500"
         >
           <div class="flex items-center p-2 gap-2">
@@ -32,6 +32,27 @@
                 class="top-0 bg-zinc-200 rounded-full w-8 h-1 mt-1 group-open:-rotate-45 transition-all group-open:-top-2 relative"
               ></div>
             </button>
+            <div
+              class="absolute top-full bg-gradient-to-r w-full left-0 from-rose-500 to-pink-500 peer-open:block hidden"
+            >
+              <div class="relative flex h-full cursor-pointer items-center justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 transition-colors   hover:bg-white/10">
+                <span>Home</span>
+              </div>
+            
+              <div class="relative flex h-full cursor-pointer items-center justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 transition-colors   hover:bg-white/10">
+              <span>Lineup</span>
+              </div>
+              <div id="ticket-menu-item" class="group relative  h-full cursor-pointer   text-pink-200 hover:text-zinc-200 transition-colors   hover:bg-white/10">
+                <div class="p-4 font-bold text-center ">Tickets</div>
+                <div class="hidden group-open:block">
+                  <div class="relative text-center p-4  text-pink-200 hover:text-zinc-200 hover:bg-white/5 transition-colors ease-in-out"><span>Single day ricket</span></div>
+                </div>
+              </div>
+              <div class="relative flex h-full cursor-pointer items-center justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 transition-colors   hover:bg-white/10">
+               <span>Support</span>
+              </div>
+            </div>
+          </div>
           </div>
 
           <div class="hidden md:flex flex-1 items-center justify-end">
@@ -72,6 +93,13 @@
           .addEventListener("click", function () {
             document
               .getElementById("mobile-menu-button")
+              .classList.toggle("open");
+          });
+           document
+          .getElementById("ticket-menu-item")
+          .addEventListener("click", function () {
+            document
+              .getElementById("ticket-menu-item")
               .classList.toggle("open");
           });
       };
