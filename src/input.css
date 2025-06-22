@@ -1,23 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url(`https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap`);
+@import "tailwindcss" important;
 
-@import "tailwindcss" source(none);
+@layer theme, base, components, utilities;
 
-@source "./";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import 'tailwindcss/theme';
+@import 'tailwindcss' source (none);
+
+@layer source './';
 
 /* @layer base {
   body {
-    font-family: "Quicksand", serif;
+    font-family: 'Quicksand', serif;
   }
 } */
 
-@theme {
-  --font-quicksand: "Quicksand", serifF;
+@layer theme {
+  --font-quicksand: 'Quicksand', serifF;
 }
 
 @layer components {
   .menu-item {
     @apply relative flex h-full items-center p-4 cursor-pointer font-bold text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors duration-500 ease-in-out;
   }
+
   .submenu-item {
     @apply p-4 font-bold hover:bg-white/5 hover:text-zinc-200 transition-colors ease-in-out cursor-pointer;
   }
@@ -28,6 +35,7 @@
     @slot;
   }
 }
+
 @custom-variant peer-open {
   &:is(:where(.peer):is(.open, [open], :popover-open, :open) ~ *) {
     @slot;
